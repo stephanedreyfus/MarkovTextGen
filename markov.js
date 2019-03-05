@@ -3,7 +3,7 @@
 class MarkovMachine {
 
   constructor(text) {
-    let words = text.split(/[ \r\n\.\,\-]+/,);
+    let words = text.split(/[ \r\n]+/);
     this.words = words.filter(c => c !== "");
     this.makeChains();
   }
