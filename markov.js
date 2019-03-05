@@ -67,3 +67,7 @@ class MarkovMachine {
 let markTest = new MarkovMachine("The quick brown fox jumped over the lazy fox and brown is a quick color");
 console.log(markTest.makeChains());
 console.log(markTest.makeText());
+
+module.exports = {
+  MarkovMachine
+}
