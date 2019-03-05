@@ -1,20 +1,14 @@
 /** Textual markov chain generator */
 
-
 class MarkovMachine {
 
-  /** build markov machine; read in text.*/
-
   constructor(text) {
-    let words = text.split(/[ \r\n]+/,);
+    let words = text.split(/[ \r\n\.\,\-]+/,);
     this.words = words.filter(c => c !== "");
     this.makeChains();
   }
 
-  /** set markov chains:
-   *
-   *  for text of "the cat in the hat", chains will be
-   *  {"the": ["cat", "hat"], "cat": ["in"], "in": ["the"], "hat": [null]} */
+  //set markov chains:
 
   makeChains() {
     let chains = {};
@@ -33,16 +27,11 @@ class MarkovMachine {
   /** return random text from chains */
 
   makeText(numWords = 100) {
-    // TODO
+
     let chain = this.makeChains();
     let story = [];
     let keyArray = Object.keys(chain);
 
-
-    //when we choose random word from the key, use getRandNum by sending 
-    // Obj[key].length. That returns a random number that we will use to pick the word
-
-    //append seed word
     let randomNumber = this.getRandNum(keyArray.length);
     story.push(keyArray[randomNumber]);
 
@@ -64,10 +53,4 @@ class MarkovMachine {
   }
 }
 
-let markTest = new MarkovMachine("The quick brown fox jumped over the lazy fox and brown is a quick color");
-console.log(markTest.makeChains());
-console.log(markTest.makeText());
-
-module.exports = {
-  MarkovMachine
-}
+module.exports = MarkovMachine;
