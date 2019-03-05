@@ -6,7 +6,7 @@ class MarkovMachine {
   /** build markov machine; read in text.*/
 
   constructor(text) {
-    let words = text.split(/[ \r\n]+/);
+    let words = text.split(/[ \r\n]+/,);
     this.words = words.filter(c => c !== "");
     this.makeChains();
   }
@@ -23,7 +23,7 @@ class MarkovMachine {
       if (chains.hasOwnProperty(this.words[i])){
         chains[this.words[i]].push(this.words[i+1]);
       } else {
-        chains[this.words[i]] = [this.words[i+1]];
+        chains[this.words[i]] = [this.words[i+1] || null];
       }
     }
     return chains;
