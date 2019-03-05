@@ -34,6 +34,33 @@ class MarkovMachine {
 
   makeText(numWords = 100) {
     // TODO
+    let chain = this.makeChains();
+    let story = [];
+    let keyArray = Object.keys(chain);
+
+
+    //when we choose random word from the key, use getRandNum by sending 
+    // Obj[key].length. That returns a random number that we will use to pick the word
+
+    //append seed word
+    let randomNumber = this.getRandNum(keyArray.length);
+    story.push(keyArray[randomNumber]);
+
+    for(let i = 0; i < numWords-1; i++){
+      let randIndex = this.getRandNum(chain[story[i]].length);
+      if(chain[story[i]][randIndex]  === null){
+        break;
+      }
+      else{
+        story.push(chain[story[i]][randIndex]);
+      }
+    }
+    return story.join(' ');
+
+  }
+
+  getRandNum(length){
+    return Math.floor(Math.random() * Math.floor(length));
   }
 }
 
