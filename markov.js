@@ -21,9 +21,9 @@ class MarkovMachine {
 
     for (let i = 0; i < this.words.length; i++){
       if (chains.hasOwnProperty(this.words[i])){
-        chains[this.word[i]].push(this.words[i+1]);
+        chains[this.words[i]].push(this.words[i+1]);
       } else {
-        chains[this.word[i]] = [this.words[i+1]];
+        chains[this.words[i]] = [this.words[i+1]];
       }
     }
     return chains;
@@ -37,3 +37,5 @@ class MarkovMachine {
   }
 }
 
+let markTest = new MarkovMachine(process.argv[2]);
+console.log(markTest.makeChains());
