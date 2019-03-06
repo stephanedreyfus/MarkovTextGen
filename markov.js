@@ -15,7 +15,7 @@ class MarkovMachine {
 
     for (let i = 0; i < this.words.length; i++){
       if (chains.hasOwnProperty(this.words[i])){
-        chains[this.words[i]].push(this.words[i+1]);
+        chains[this.words[i]].push(this.words[i+1] || null);
       } else {
         chains[this.words[i]] = [this.words[i+1] || null];
       }
